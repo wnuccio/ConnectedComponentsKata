@@ -10,4 +10,14 @@ public class ConnectedComponentsTest {
         assertEquals(1, new ConnectedComponents("I").componentsNumber());
     }
 
+    @Test
+    void return_two_for_two_different_character_string() {
+        assertEquals(2, new ConnectedComponents("IO").componentsNumber());
+    }
+
+    @Test
+    void return_one_for_two_equals_character_string() {
+        assertEquals(1, new ConnectedComponents("II").componentsNumber());
+    }
 }
+

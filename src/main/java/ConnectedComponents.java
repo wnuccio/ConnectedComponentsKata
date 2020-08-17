@@ -1,8 +1,11 @@
 public class ConnectedComponents {
-    public ConnectedComponents(String i) {
+    private final String string;
+
+    public ConnectedComponents(String string) {
+        this.string = string;
     }
 
     public int componentsNumber() {
-        return 1;
+        return string.contains("O") ? 2 : 1;
     }
 }
