@@ -1,4 +1,4 @@
-# ConnectedComponentsKata
+# Connected Components Kata
 
 This project has born to explore a interesting problem with the help of TDD approch.
 The problem is inspired by a question on Quora, and is the following:
