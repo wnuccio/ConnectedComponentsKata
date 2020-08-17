@@ -6,6 +6,7 @@ public class ConnectedComponents {
     }
 
     public int componentsNumber() {
-        return string.contains("O") ? 2 : 1;
+        boolean different = string.contains("I") && string.contains("O");
+        return different ? 2 : 1;
     }
 }

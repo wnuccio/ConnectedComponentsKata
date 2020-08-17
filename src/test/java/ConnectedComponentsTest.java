@@ -18,6 +18,7 @@ public class ConnectedComponentsTest {
     @Test
     void return_one_for_two_equals_character_string() {
         assertEquals(1, new ConnectedComponents("II").componentsNumber());
+        assertEquals(1, new ConnectedComponents("OO").componentsNumber());
     }
 }
 
