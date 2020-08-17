@@ -31,5 +31,15 @@ public class ConnectedComponentsTest {
         assertEquals(3, new ConnectedComponents("OIO").componentsNumber());
         assertEquals(3, new ConnectedComponents("IOI").componentsNumber());
     }
+
+    @Test
+    void return_components_for_mixed_IO_string() {
+        assertEquals(5, new ConnectedComponents("OIIOOOIIIIO").componentsNumber());
+    }
+
+    @Test
+    void return_components_for_mixed_any_char_string() {
+        assertEquals(6, new ConnectedComponents("aaaBBB___aa__BB").componentsNumber());
+    }
 }
 
