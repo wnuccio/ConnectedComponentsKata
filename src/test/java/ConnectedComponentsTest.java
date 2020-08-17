@@ -41,5 +41,10 @@ public class ConnectedComponentsTest {
     void return_components_for_mixed_any_char_string() {
         assertEquals(6, new ConnectedComponents("aaaBBB___aa__BB").componentsNumber());
     }
+
+    @Test
+    void return_one_for_two_dimensional_component_of_one_char() {
+        assertEquals(1, new ConnectedComponents("OO", "OO").componentsNumber());
+    }
 }
 
