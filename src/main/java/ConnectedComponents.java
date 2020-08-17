@@ -6,7 +6,17 @@ public class ConnectedComponents {
     }
 
     public int componentsNumber() {
-        boolean different = string.contains("I") && string.contains("O");
-        return different ? 2 : 1;
+        char[] chars = string.toCharArray();
+        char lastDifferentChar = chars[0];
+        int count = 1;
+        for (int i=1; i<chars.length; ++i) {
+            char currentChar = chars[i];
+            if (currentChar != lastDifferentChar) {
+                lastDifferentChar = currentChar;
+                count++;
+            }
+        }
+
+        return count;
     }
 }
