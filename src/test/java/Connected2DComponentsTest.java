@@ -19,11 +19,38 @@ public class Connected2DComponentsTest {
         }).componentsNumber());
     }
 
-//    @Test
-//    void return_four_with_two_symbols_all_separated() {
-//        assertEquals(4, new Connected2DComponents(new int[][]{
-//                {1, 0},
-//                {0, 1}
-//        }).componentsNumber());
-//    }
+    @Test
+    void return_four_with_two_symbols_all_separated() {
+        assertEquals(4, new Connected2DComponents(new int[][]{
+                {1, 0},
+                {0, 1}
+        }).componentsNumber());
+    }
+
+    @Test
+    void return_three_areas() {
+        assertEquals(3, new Connected2DComponents(new int[][]{
+                {1, 1, 0},
+                {0, 1, 0}
+        }).componentsNumber());
+    }
+
+    @Test
+    void return_five_areas() {
+        assertEquals(5, new Connected2DComponents(new int[][]{
+                {1, 1, 0, 1},
+                {0, 1, 0, 0},
+                {0, 1, 0, 1}
+        }).componentsNumber());
+    }
+
+    @Test
+    void return_ten_areas() {
+        assertEquals(10, new Connected2DComponents(new int[][]{
+                {7, 1, 2, 2, 2, 3},
+                {8, 1, 1, 4, 4, 3},
+                {8, 0, 1, 4, 3, 3},
+                {9, 0, 1, 5, 3, 6}
+        }).componentsNumber());
+    }
 }
