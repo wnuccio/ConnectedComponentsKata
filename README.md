@@ -1,7 +1,9 @@
 # Connected Components Kata
 
 This project has born to explore a interesting problem with the help of TDD approch.
-The problem is inspired by a question on Quora, and is the following:
+The problem is inspired by a question on Quora (https://www.quora.com/What-are-some-programming-problems-that-look-hard-at-a-first-glance-but-are-actually-easy)
+
+Here it is a short description:
 
 - Given a black and white picture, recognize how many "connected areas" it contains,
 where a connected area is composed of pixels of the same color. Two pixel are considered 
