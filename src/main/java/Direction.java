@@ -3,7 +3,7 @@ import java.util.Optional;
 enum Direction {
     UP, DOWN, RIGHT, LEFT;
 
-    Optional<Point> adjacentPoint(Point point, Connected2DComponents connected2DComponents) {
+    Optional<Point> adjacentPoint(Point point, Grid connected2DComponents) {
         int i, j;
         switch (this) {
             case UP:

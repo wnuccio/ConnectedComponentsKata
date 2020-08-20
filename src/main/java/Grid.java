@@ -1,12 +1,12 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class Connected2DComponents {
+public class Grid {
     private final int[][] grid;
     private final int iMax;
     private final int jMax;
 
-    public Connected2DComponents(int[][] grid) {
+    public Grid(int[][] grid) {
         this.grid = grid;
         this.iMax = grid.length - 1;
         this.jMax = grid.length > 0 ? grid[0].length - 1 : -1;
