@@ -3,6 +3,19 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Connected2DComponentsTest {
+
+    @Test
+    void return_0_for_empty_grid() {
+        assertEquals(0, new Connected2DComponents(new int[][]{}).componentsNumber());
+    }
+
+    @Test
+    void return_one_for_1x1_grid() {
+        assertEquals(1, new Connected2DComponents(new int[][]{
+                {0}
+        }).componentsNumber());
+    }
+
     @Test
     void return_one_for_one_symbol() {
         assertEquals(1, new Connected2DComponents(new int[][]{
