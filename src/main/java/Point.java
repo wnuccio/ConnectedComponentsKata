@@ -1,12 +1,14 @@
 import java.util.Objects;
 
 class Point {
-    int i;
-    int j;
+    final int i;
+    final int j;
+    final int symbol;
 
-    public Point(int i, int j) {
+    public Point(int i, int j, int symbol) {
         this.i = i;
         this.j = j;
+        this.symbol = symbol;
     }
 
     @Override
@@ -21,5 +23,14 @@ class Point {
     @Override
     public int hashCode() {
         return Objects.hash(i, j);
+    }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "i=" + i +
+                ", j=" + j +
+                ", symbol=" + symbol +
+                '}';
     }
 }

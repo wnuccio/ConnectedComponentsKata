@@ -1,1 +1,2 @@
 - test the empty string case (return 0 components)
+- test create a linear square inside another square

@@ -45,12 +45,38 @@ public class Connected2DComponentsTest {
     }
 
     @Test
+    void return_five_ares_in_linear_string() {
+        assertEquals(5, new Connected2DComponents(new int[][]{
+                {0, 0, 0, 1, 1, 2, 2, 3, 0, 0}
+        }).componentsNumber());
+    }
+
+    @Test
+    void recognize_area_moving_from_a_point_in_all_directions() {
+        assertEquals(2, new Connected2DComponents(new int[][]{
+                {0, 1},
+                {1, 1}
+        }).componentsNumber());
+    }
+
+    @Test
+    void recognize_linear_square_inside_square() {
+        assertEquals(3, new Connected2DComponents(new int[][]{
+                {0, 0, 0, 0, 0},
+                {0, 1, 1, 1, 0},
+                {0, 1, 0, 1, 0},
+                {0, 1, 1, 1, 0},
+                {0, 0, 0, 0, 0}
+        }).componentsNumber());
+    }
+
+    @Test
     void return_ten_areas() {
         assertEquals(10, new Connected2DComponents(new int[][]{
-                {7, 1, 2, 2, 2, 3},
-                {8, 1, 1, 4, 4, 3},
-                {8, 0, 1, 4, 3, 3},
-                {9, 0, 1, 5, 3, 6}
+                {1, 5, 3, 3, 3, 5},
+                {0, 5, 5, 4, 4, 5},
+                {0, 2, 5, 4, 5, 5},
+                {1, 2, 5, 1, 5, 1}
         }).componentsNumber());
     }
 }
