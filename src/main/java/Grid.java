@@ -12,38 +12,22 @@ public class Grid {
         this.jMax = grid.length > 0 ? grid[0].length - 1 : -1;
     }
 
-    private void extendConnectionInAllDirections(Connection currentConnection, Point currentPoint, List<Connection> foundConnections) {
-        for (Direction d: Direction.values()) {
-            extendConnection(currentConnection, currentPoint, d, foundConnections);
-        }
+    boolean areValidCoordinates(int i, int j) {
+        return (i >= 0 && i <= iMax && j >= 0 && j <= jMax);
     }
 
-    private void extendConnection(Connection currentConnection, Point currentPoint, Direction d, List<Connection> foundConnections) {
-        Point adjacentPoint = d.adjacentPoint(currentPoint, this).orElse(null);
-
-        if (adjacentPoint == null) return;
-        if (currentConnection.contains(adjacentPoint)) return;
-        if (anyContains(foundConnections, adjacentPoint)) return;
-        if (currentPoint.symbol != adjacentPoint.symbol) return;
-
-        currentConnection.add(adjacentPoint);
-        extendConnectionInAllDirections(currentConnection, adjacentPoint, foundConnections);
-    }
-
-    boolean areValid(int i, int j) {
-        return (i >= 0 && i<=iMax && j>=0 && j<=jMax);
+    Point pointAt(int i, int j) {
+        return new Point(i, j, grid[i][j]);
     }
 
     public int componentsNumber() {
         List<Connection> foundConnections = new LinkedList<>();
 
-        for (int i = 0; i < grid.length; ++i) {
-            for (int j = 0; j < grid[i].length; j++) {
-                int symbol = symbolAt(i, j);
-                Point currentPoint = new Point(i, j, symbol);
+        for (int i = 0; i <= iMax; ++i) {
+            for (int j = 0; j <= jMax; j++) {
+                Point currentPoint = pointAt(i, j);
                 if (!anyContains(foundConnections, currentPoint)) {
-                    Connection newConnection = Connection.empty();
-                    newConnection.add(currentPoint);
+                    Connection newConnection = Connection.from(currentPoint);
                     extendConnectionInAllDirections(newConnection, currentPoint, foundConnections);
                     foundConnections.add(newConnection);
                 }
@@ -52,8 +36,22 @@ public class Grid {
         return foundConnections.size();
     }
 
-    int symbolAt(int i, int j) {
-        return grid[i][j];
+    private void extendConnectionInAllDirections(Connection currentConnection, Point currentPoint, List<Connection> foundConnections) {
+        for (Direction d : Direction.values()) {
+            extendConnection(currentConnection, currentPoint, d, foundConnections);
+        }
+    }
+
+    private void extendConnection(Connection currentConnection, Point currentPoint, Direction d, List<Connection> foundConnections) {
+        Point adjacentPoint = currentPoint.adjacentPoint(d, this).orElse(null);
+
+        if (adjacentPoint == null) return;
+        if (currentConnection.contains(adjacentPoint)) return;
+        if (anyContains(foundConnections, adjacentPoint)) return;
+        if (currentPoint.hasDifferentSymbol(adjacentPoint)) return;
+
+        currentConnection.add(adjacentPoint);
+        extendConnectionInAllDirections(currentConnection, adjacentPoint, foundConnections);
     }
 
     private boolean anyContains(List<Connection> connections, Point point) {

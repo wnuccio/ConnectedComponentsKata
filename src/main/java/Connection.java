@@ -2,18 +2,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Connection {
-    private Set<Point> points;
+    private Set<Point> points = new HashSet<>();
 
-    public Connection(Set<Point> points) {
-        this.points = points;
-    }
-
-    public static Connection empty() {
-        return new Connection(new HashSet<>());
-    }
-
-    public void addAll(Connection connection) {
-        points.addAll(connection.points);
+    public static Connection from(Point point) {
+        Connection result = new Connection();
+        result.add(point);
+        return result;
     }
 
     public void add(Point point) {
